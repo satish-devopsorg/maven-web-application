@@ -25,7 +25,7 @@ sh "${mavenhome}/bin/mvn sonar:sonar"
  */
  stage("Deploy Application to Tomcat Server")
  {
-sh "sshpass -p 'nidish@123' target/maven-web-application.war ssh satish@10.0.2.15 /opt/tomcat/apache-tomcat-9.0.39/webapps/" 
+sh "sudo sshpass -p 'nidish@123' target/maven-web-application.war ssh satish@10.0.2.15 /opt/tomcat/apache-tomcat-9.0.39/webapps/" 
 deploy adapters: [tomcat9(credentialsId: '985c68a4-8454-4f34-be2a-8fb80f0d842d', path: '', url: 'http://10.0.2.15:8082/')], contextPath: '/satishpipescript', war: 'maven-web-application.war'
 }
 
