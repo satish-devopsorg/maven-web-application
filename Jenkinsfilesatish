@@ -1,5 +1,5 @@
 node{
-    
+ /*   
     def mavenhome = tool name: "maven"
     
   stage('Checkout Git') {
@@ -22,7 +22,7 @@ sh "${mavenhome}/bin/mvn sonar:sonar"
  {
  sh "${mavenhome}/bin/mvn deploy"
  }
- 
+ */
  stage("Deploy Application to Tomcat Server")
  {
 sh "sshpass -p 'nidish@123' target/maven-web-application.war ssh satish@10.0.2.15 /opt/tomcat/apache-tomcat-9.0.39/webapps/" 
