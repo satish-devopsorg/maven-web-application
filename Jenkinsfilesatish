@@ -13,20 +13,16 @@ stage('Maven Build') {
 sh "${mavenhome}/bin/mvn clean package"
 }
 
-stage("SonarQube Report Geneartion")
+/* stage("SonarQube Report Geneartion")
 {
 sh "${mavenhome}/bin/mvn sonar:sonar"    
 }
+*/
 
-stages {
-          stage("build & SonarQube analysis") {
-            agent any
-            steps {
-              withSonarQubeEnv('My SonarQube Server') {
-                sh 'mvn clean package sonar:sonar'
-              }
-            }
-           } 
+  stage("build & SonarQube analysis") {
+            withSonarQubeEnv('My SonarQube Server') {
+                sh '${mavenhome}/bin/mvn sonar:sonar'
+          } 
            }
   stage("Quality Gate")
   {
