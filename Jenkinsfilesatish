@@ -25,17 +25,18 @@ sh "${mavenhome}/bin/mvn sonar:sonar"
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
           }
- */
-
+ 
+/*
  stage("UploadArtifactsintoNexus")
  {
  sh "${mavenhome}/bin/mvn deploy"
  }
- 
+ */
  stage("Deploy Application to Tomcat Server")
  {
-sh "target/maven-web-application.war /opt/tomcat/apache-tomcat-9.0.39/webapps/" 
 deploy adapters: [tomcat9(credentialsId: '985c68a4-8454-4f34-be2a-8fb80f0d842d', path: '', url: 'http://10.0.2.15:8082/')], contextPath: '/satishpipescript', war: 'maven-web-application.war'
+sh "target/maven-web-application.war /opt/tomcat/apache-tomcat-9.0.39/webapps/" 
+
 }
 
  stage("Email Notification sending to DevOps Team")
