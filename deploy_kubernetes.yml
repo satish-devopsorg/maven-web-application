@@ -16,7 +16,7 @@ spec:
         app: mavenwebapp
     spec:
       containers:
-      - image: satishrekha/maven-web-app:18
+      - image: satishrekha/maven-web-app:VERSION
         name: mavenwebappcontainer
         ports:
         - containerPort: 8080
